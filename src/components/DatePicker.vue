@@ -6,6 +6,7 @@
         style="font-size:1.2rem;font-weight:700;width:100px;margin:auto;margin-top:-20px"
         success
         circle
+        @click="getSelected"
       >Done</vs-button>
       <div class="pickerCard">
         <div class="pickerCardHead">Select Year</div>
@@ -21,7 +22,10 @@
         <div v-if="pickedYear" class="pickerCard">
           <div class="pickerCardHead">Select Month</div>
           <div @click="pickMonth($event)" class="pickerCardBody flexWrap">
-            <p v-for="month in months" :key="month" class="pickOption">{{month}}</p>
+            <div v-for="(month,index) in months" :key="month" class="pickOption">
+              {{month}}
+              <span style="display:none" id="monthNo">{{index + 1}}</span>
+            </div>
           </div>
         </div>
       </transition>
@@ -44,8 +48,37 @@
 <script>
 export default {
   methods: {
+    getSelected() {
+      if (
+        this.pickedYear &&
+        this.pickedMonth == null &&
+        this.pickedDay == null
+      ) {
+        this.selected.type = "Year";
+        this.selected.value = `${this.pickedYear}`;
+      } else if (this.pickedMonth && this.pickedDay == null) {
+        this.selected.type = "Month";
+        this.selected.value = `${this.pickedMonth}/${this.pickedYear}`;
+      } else if (this.pickedDay) {
+        this.selected.type = "Day";
+        this.selected.value = `${this.pickedDay}/${this.pickedMonth}/${this.pickedYear}`;
+      } else {
+        this.hidePicker();
+        this.selected.type = "None";
+      }
+      this.$emit("selected", this.selected);
+    },
     hidePicker() {
       document.querySelector(".datePicker").style.top = "100%";
+    },
+    clearOptions() {
+      this.pickedYear = null;
+      this.pickedMonth = null;
+      this.pickedDay = null;
+      const selected = document.querySelectorAll(".picked");
+      selected.forEach(option => {
+        option.classList.remove("picked");
+      });
     },
     pickYear(e) {
       const elem = e.target;
@@ -73,7 +106,7 @@ export default {
           this.pickedMonth = null;
           this.pickedDay = null;
         } else {
-          this.pickedMonth = elem.textContent;
+          this.pickedMonth = elem.querySelector("#monthNo").textContent;
           const parent = e.currentTarget;
           if (parent.querySelector(".picked")) {
             parent.querySelector(".picked").classList.remove("picked");
@@ -101,6 +134,10 @@ export default {
   },
   data() {
     return {
+      selected: {
+        type: null,
+        value: null
+      },
       pickedYear: null,
       pickedMonth: null,
       pickedDay: null,
@@ -132,7 +169,7 @@ export default {
 }
 .grid5 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 6px 10px;
 }
 .grid5 .pickOption {
@@ -153,19 +190,25 @@ export default {
   height: 100vh;
   width: 100%;
   top: 0%;
-  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.2s ease-in-out;
+  z-index: 3;
 }
 .pickerContent {
-  border-top: 2px solid rgb(0, 197, 0);
+  border-top: 3px solid rgb(40, 255, 40);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   background: #021737;
-  height: 75%;
   position: absolute;
   width: 100%;
   bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  transition: height 0.2s ease;
 }
 .hidePicker {
   top: 0;
-  height: 25%;
+  height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.486);
 }
@@ -173,7 +216,7 @@ export default {
   margin: 10px;
   background: #00529583;
   border-radius: 20px 20px 10px 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .pickerCardHead {
   background: #00a8ff;
@@ -184,12 +227,15 @@ export default {
 }
 .pickerCardBody {
   padding: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 .pickOption {
   border: 2px solid #0668b8;
   border-radius: 20px;
-  padding: 5px;
-  padding-top: 8px;
+  padding: 4px;
+  padding-top: 6px;
+  font-size: 0.6rem;
 }
 .picked {
   background: #0668b8;

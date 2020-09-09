@@ -52,6 +52,8 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 hr {
   background: rgba(255, 255, 255, 0.63);
