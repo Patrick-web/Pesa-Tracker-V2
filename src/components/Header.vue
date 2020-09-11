@@ -1,13 +1,17 @@
 <template>
   <div class="header">
     <img id="backArrow" src="@/assets/images/arrow.svg" alt />
-    <p id="headerName">Cash Flow</p>
+    <p id="headerName">{{page}}</p>
     <img id="menuToggle" src="@/assets/images/menu-toggle.svg" alt />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    page: String
+  }
+};
 </script>
 
 <style>
@@ -17,6 +21,9 @@ export default {};
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
+  position: fixed;
+  top: 0;
+  box-shadow: 2px 0px 20px black;
   /* padding: 10px; */
 }
 #backArrow {

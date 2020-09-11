@@ -8,7 +8,9 @@ body {
   height: 100vh;
   width: 100%;
   position: absolute;
+  overflow-x: scroll;
+  padding-top: 40px;
 }
 .card {
-  background: #005194;
+  background: #044174;
 }

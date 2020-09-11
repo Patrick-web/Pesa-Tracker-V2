@@ -12,7 +12,7 @@
         <div></div>
         <vs-button class="key">0</vs-button>
         <vs-button @click="popFromPin" class="key">
-          <box-icon color="white" type="solid" name="tag-x"></box-icon>
+          <img class="backspaceIcon" src="@/assets/images/backspace.svg" alt />
         </vs-button>
       </div>
     </div>
@@ -140,5 +140,8 @@ input {
   border: 2px white solid;
   border-radius: 50%;
   background: white;
+}
+.backspaceIcon {
+  width: 90%;
 }
 </style>

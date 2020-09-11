@@ -1,5 +1,5 @@
 <template>
-  <div class="flowCard">
+  <div class="flowCard card">
     <p class="cardTitle">{{day}}</p>
     <hr />
     <div class="cardBody">
@@ -34,10 +34,10 @@ export default {
 
 <style >
 .flowCard {
-  background: #005194;
-  margin: 10px;
-  padding: 5px 2px 5px 2px;
-  border-radius: 10px;
+  background: #044174;
+  margin: 20px 10px 20px 10px;
+  padding: 5px 2px 10px 2px;
+  border-radius: 20px;
 }
 .cardTitle {
   font-size: 1.7em;

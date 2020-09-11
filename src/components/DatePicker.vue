@@ -36,7 +36,7 @@
       >
         <div v-if="pickedMonth" class="pickerCard">
           <div class="pickerCardHead">Select Day</div>
-          <div @click="pickDay($event)" class="pickerCardBody grid5">
+          <div @click="pickDay($event)" class="pickerCardBody grid7">
             <p v-for="day in 31 " :key="day" class="pickOption">{{day}}</p>
           </div>
         </div>
@@ -63,10 +63,12 @@ export default {
         this.selected.type = "Day";
         this.selected.value = `${this.pickedDay}/${this.pickedMonth}/${this.pickedYear}`;
       } else {
-        this.hidePicker();
         this.selected.type = "None";
       }
-      this.$emit("selected", this.selected);
+      if (this.selected.type !== "None") {
+        this.$emit("selected", this.selected);
+      }
+      this.hidePicker();
     },
     hidePicker() {
       document.querySelector(".datePicker").style.top = "100%";
@@ -167,12 +169,12 @@ export default {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px 20px;
 }
-.grid5 {
+.grid7 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 6px 10px;
 }
-.grid5 .pickOption {
+.grid7 .pickOption {
   padding: 2px;
   padding-top: 4px;
 }
@@ -189,7 +191,7 @@ export default {
   position: fixed;
   height: 100vh;
   width: 100%;
-  top: 0%;
+  top: 100%;
   transition: 0.2s ease-in-out;
   z-index: 3;
 }

@@ -18,7 +18,7 @@
         <div></div>
         <vs-button class="key">0</vs-button>
         <vs-button @click="popFromPin" class="key">
-          <box-icon color="white" type="solid" name="tag-x"></box-icon>
+          <img class="backspaceIcon" src="@/assets/images/backspace.svg" alt />
         </vs-button>
       </div>
     </div>
@@ -34,7 +34,7 @@ export default {
         if (document.querySelector(".circle")) {
           const currentCircle = document.querySelector(".circle");
           currentCircle.className = "filled";
-          currentCircle.classList.add("animated", "heartBeat", "fast");
+          currentCircle.classList.add("animated", "extraFast", "heartBeat");
         }
         this.pin.push(num);
         console.log(this.pin);
@@ -55,7 +55,7 @@ export default {
             this.pin.length = 0;
             document.querySelectorAll(".filled").forEach(circle => {
               circle.className = "circle";
-              circle.classList.add("animated", "headShake");
+              circle.classList.add("animated", "extraFast", "headShake");
             });
           }, 400);
         }

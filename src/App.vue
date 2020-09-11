@@ -1,11 +1,10 @@
 <template>
   <div id="app">
-    <Header />
     <SideNav />
     <transition
       name="slideLeft"
-      enter-active-class="animated slideInRight faster"
-      leave-active-class="animated slideOutLeft faster"
+      enter-active-class="animated slideInRight extraFast"
+      leave-active-class="animated slideOutLeft extraFast"
     >
       <router-view />
     </transition>
@@ -14,12 +13,10 @@
 <script>
 import "boxicons";
 import SideNav from "@/components/SideNav";
-import Header from "@/components/Header";
 export default {
   components: {
-    SideNav,
-    Header,
-  },
+    SideNav
+  }
 };
 </script>
 <style>
