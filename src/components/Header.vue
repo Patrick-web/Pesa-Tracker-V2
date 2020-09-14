@@ -1,6 +1,7 @@
 <template>
   <div class="header">
-    <img id="backArrow" src="@/assets/images/arrow.svg" alt />
+    <img v-if="!hideBackArrow" @click="popRoute" id="backArrow" src="@/assets/images/arrow.svg" alt />
+    <p v-if="hideBackArrow" id="filler"></p>
     <p id="headerName">{{page}}</p>
     <img id="menuToggle" src="@/assets/images/menu-toggle.svg" alt />
   </div>
@@ -8,8 +9,15 @@
 
 <script>
 export default {
+  methods: {
+    popRoute() {
+      this.$router.back();
+      console.log(this.$router);
+    }
+  },
   props: {
-    page: String
+    page: String,
+    hideBackArrow: String
   }
 };
 </script>
@@ -27,7 +35,10 @@ export default {
   /* padding: 10px; */
 }
 #backArrow {
-  width: 35px;
+  justify-self: left;
+  margin-left: 10px;
+}
+#filler {
   justify-self: left;
   margin-left: 10px;
 }

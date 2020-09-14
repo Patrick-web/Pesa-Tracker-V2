@@ -1,6 +1,6 @@
 <template>
   <div class="cashFlow page">
-    <Header page="Cash Flow" />
+    <Header hideBackArrow="true" page="Cash Flow" />
     <FlowCard :cashIn="'400'" :day="'Today'" :cashOut="'600'" :savings="'0'" />
     <FlowCard :cashIn="'400'" :day="'Today'" :cashOut="'600'" :savings="'0'" />
     <DatePicker v-on:selected="displaySelectedDate" />

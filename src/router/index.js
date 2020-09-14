@@ -4,8 +4,9 @@ import Auth from "../views/Auth.vue";
 import AuthInit from "../views/AuthInit.vue";
 import CashFlow from "../views/CashFlow.vue";
 import DataPage from "../views/DataPage.vue";
-import SavingsHome from "../views/SavingsHome.vue";
 import StatementsHome from "../views/StatementsHome.vue";
+import SavingsHome from "../views/SavingsHome.vue";
+import Savings from "../views/Savings.vue";
 
 Vue.use(VueRouter);
 
@@ -34,6 +35,11 @@ const routes = [
     path: "/savingshome",
     name: "savingshome",
     component: SavingsHome,
+  },
+  {
+    path: "/savings/:savingsType",
+    name: "savings",
+    component: Savings,
   },
   {
     path: "/statementshome",
