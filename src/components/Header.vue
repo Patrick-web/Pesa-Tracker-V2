@@ -12,7 +12,6 @@ export default {
   methods: {
     popRoute() {
       this.$router.back();
-      console.log(this.$router);
     }
   },
   props: {

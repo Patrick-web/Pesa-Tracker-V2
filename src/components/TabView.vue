@@ -2,6 +2,7 @@
   <div class="tabView">
     <div class="switchers">
       <div class="indicator"></div>
+      <div v-if="tabs.length==1" class="indicator-fullWidth"></div>
       <div class="switchersWrapper">
         <div
           @click="switchTab(index)"
@@ -85,6 +86,15 @@ export default {
   border-radius: 20px;
   background: rgb(25, 91, 255);
   transition: 0.2s ease-in-out;
+}
+.indicator-fullWidth {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  background: rgb(25, 91, 255);
 }
 .switcher {
   padding: 10px;

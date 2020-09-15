@@ -1,6 +1,7 @@
 <template>
-  <div class="savingsHome page">
+  <div class="savings page">
     <Header :page="$route.params.savingsType" />
+    <Graph />
     <TabView :tabs="tabs" />
     <img id="wave" src="@/assets/images/wave.svg" alt />
   </div>
@@ -8,6 +9,7 @@
 <script>
 import Header from "@/components/Header.vue";
 import TabView from "@/components/TabView.vue";
+import Graph from "@/components/Graph.vue";
 export default {
   data() {
     return {
@@ -59,12 +61,17 @@ export default {
   },
   components: {
     Header,
-    TabView
+    TabView,
+    Graph
   }
 };
 </script>
 
 <style>
+.savings {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 .totalSavings {
   display: flex;
   justify-content: space-between;
