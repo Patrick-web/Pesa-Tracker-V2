@@ -2,6 +2,7 @@
   <div class="graphArea">
     <div class="graphsWrapper">
       <MonthsGraph />
+      <DaysGraph />
     </div>
   </div>
 </template>
@@ -90,18 +91,22 @@ export default {
 
 <style scoped>
 .graphArea {
-  width: 100vw;
+  width: 95%;
   overflow: hidden;
   margin: auto;
-  margin-top: 10px;
-  height: 350px;
-  margin-bottom: 50px;
+  margin-top: 5px;
+  height: 300px;
+  margin-bottom: 10px;
   position: relative;
-  background: orange;
+  background: rgba(0, 102, 255, 0.123);
+  border-radius: 10px;
 }
 .graphsWrapper {
-  width: 200%;
-  height: 100%;
-  background: palevioletred;
+  width: 100%;
+  height: 200%;
+  transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.scrollToDays {
+  transform: translateY(-50%);
 }
 </style>

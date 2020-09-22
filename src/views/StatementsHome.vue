@@ -1,34 +1,36 @@
 <template>
   <div class="StatementsHome page">
     <Header page="Statements" />
-    <StatementCard cardTitle="June" buttonText="Show Full Statement">
-      <div slot="cardBody" class="cardBody">
-        <div class="cardItem">
-          <p class="transDate">Total Paid</p>
-          <p>Ksh 5415</p>
+    <router-link :to="{name:'statement', params:{selected:'May'}}">
+      <StatementCard @click="generateStatement" cardTitle="June" buttonText="Show Full Statement">
+        <div slot="cardBody" class="cardBody">
+          <div class="cardItem">
+            <p class="transDate">Total Paid</p>
+            <p>Ksh 5415</p>
+          </div>
+          <hr />
+          <div class="cardItem">
+            <p class="transDate">Total Sent</p>
+            <p>Ksh 4655</p>
+          </div>
+          <hr />
+          <div class="cardItem">
+            <p class="transDate">Total Received</p>
+            <p>Ksh 5454</p>
+          </div>
+          <hr />
+          <div class="cardItem">
+            <p class="transDate">Total Withdrawn</p>
+            <p>Ksh 5454</p>
+          </div>
+          <hr />
+          <div class="cardItem">
+            <p class="transDate">Total Deposited</p>
+            <p>Ksh 5454</p>
+          </div>
         </div>
-        <hr />
-        <div class="cardItem">
-          <p class="transDate">Total Sent</p>
-          <p>Ksh 4655</p>
-        </div>
-        <hr />
-        <div class="cardItem">
-          <p class="transDate">Total Received</p>
-          <p>Ksh 5454</p>
-        </div>
-        <hr />
-        <div class="cardItem">
-          <p class="transDate">Total Withdrawn</p>
-          <p>Ksh 5454</p>
-        </div>
-        <hr />
-        <div class="cardItem">
-          <p class="transDate">Total Deposited</p>
-          <p>Ksh 5454</p>
-        </div>
-      </div>
-    </StatementCard>
+      </StatementCard>
+    </router-link>
     <DatePicker v-on:selected="getStatementForSelectedDate" />
     <vs-button @click="showDatePicker" style="width:50px;height:50px;" id="fab" success circle>
       <img width="90%" src="@/assets/images/calendar.svg" alt />
@@ -48,6 +50,9 @@ export default {
     },
     getStatementForSelectedDate(date) {
       console.log(date);
+    },
+    generateStatement() {
+      console.log("Generating Statement");
     }
   },
   components: {

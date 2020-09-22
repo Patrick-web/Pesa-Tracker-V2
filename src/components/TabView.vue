@@ -2,22 +2,22 @@
   <div class="tabView">
     <div class="switchers">
       <div class="indicator"></div>
-      <div v-if="tabs.length==1" class="indicator-fullWidth"></div>
+      <div v-if="tabs.length == 1" class="indicator-fullWidth"></div>
       <div class="switchersWrapper">
         <div
           @click="switchTab(index)"
-          v-for="(tab,index) in tabs"
+          v-for="(tab, index) in tabs"
           :key="tab.name"
           class="switcher"
-        >{{tab.name}}</div>
+        >{{ tab.name }}</div>
       </div>
     </div>
     <div class="tabs">
       <div class="tabsWrapper">
         <div v-for="tab in tabs" :key="tab.name" class="tab">
           <div v-for="item in tab.items" :key="item.id" class="tab-item">
-            <p>{{item.param1}}</p>
-            <p>{{item.param2}}</p>
+            <p>{{ item.param1 }}</p>
+            <p>{{ item.param2 }}</p>
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@ export default {
   width: 50%;
   border-radius: 20px;
   background: rgb(25, 91, 255);
-  transition: 0.2s ease-in-out;
+  transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .indicator-fullWidth {
   position: absolute;
@@ -110,7 +110,7 @@ export default {
 .tabsWrapper {
   width: 200%;
   display: flex;
-  transition: 0.2s ease-in-out;
+  transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .tab {
   width: 50%;

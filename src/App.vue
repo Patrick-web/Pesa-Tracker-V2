@@ -3,7 +3,7 @@
     <SideNav />
     <transition
       name="slideLeft"
-      enter-active-class="animated slideInRight extraFast"
+      enter-active-class="animated slideInRight faster"
       leave-active-class="animated slideOutLeft extraFast"
     >
       <router-view />
@@ -15,8 +15,8 @@ import "boxicons";
 import SideNav from "@/components/SideNav";
 export default {
   components: {
-    SideNav
-  }
+    SideNav,
+  },
 };
 </script>
 <style>

@@ -31,6 +31,7 @@ export default {
   position: fixed;
   top: 0;
   box-shadow: 2px 0px 20px black;
+  z-index: 5;
   /* padding: 10px; */
 }
 #backArrow {

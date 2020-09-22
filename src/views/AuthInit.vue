@@ -2,15 +2,27 @@
   <div class="auth page">
     <img src="@/assets/images/user-lock.svg" alt />
     <p style="font-size:1.1rem;color:white">Create Pin Number</p>
-    <router-link style="position:fixed" id="goToHome" to="/CashFlow"></router-link>
-    <p style="font-size:1.1rem;color:white;font-weight:800">{{ pin.join("") }}</p>
+    <router-link
+      style="position:fixed"
+      id="goToHome"
+      to="/CashFlow"
+    ></router-link>
+    <p style="font-size:1.1rem;color:white;font-weight:800">
+      {{ pin.join("") }}
+    </p>
     <div class="keypad">
       <div class="keys">
-        <vs-button @click="addToPin(key)" v-for="key in keys" :key="key" class="key">{{ key }}</vs-button>
+        <vs-button
+          @click="addToPin(key)"
+          v-for="key in keys"
+          :key="key"
+          class="key"
+          >{{ key }}</vs-button
+        >
       </div>
       <div class="grid3">
         <div></div>
-        <vs-button class="key">0</vs-button>
+        <vs-button @click="addToPin(0)" class="key">0</vs-button>
         <vs-button @click="popFromPin" class="key">
           <img class="backspaceIcon" src="@/assets/images/backspace.svg" alt />
         </vs-button>
@@ -56,7 +68,7 @@ export default {
         color: "success",
         position: "top-center",
         title: "Success",
-        text: `Pin has been Set`
+        text: `Pin has been Set`,
       });
       localStorage.setItem("gapi.googleapis.com", `${this.pin.join("")}`);
       setTimeout(() => {
@@ -70,16 +82,16 @@ export default {
         circles[circles.length - 1].className = "circle";
         console.log(this.pin.join(""));
       }
-    }
+    },
   },
   data() {
     return {
       defaultPin: "5626",
       entries: ["regular", "regular", "regular", , "regular"],
       pin: [],
-      keys: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      keys: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     };
-  }
+  },
 };
 </script>
 

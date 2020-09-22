@@ -5,6 +5,7 @@ import AuthInit from "../views/AuthInit.vue";
 import CashFlow from "../views/CashFlow.vue";
 import DataPage from "../views/DataPage.vue";
 import StatementsHome from "../views/StatementsHome.vue";
+import Statement from "../views/Statement.vue";
 import SavingsHome from "../views/SavingsHome.vue";
 import Savings from "../views/Savings.vue";
 
@@ -42,9 +43,14 @@ const routes = [
     component: Savings,
   },
   {
-    path: "/statementshome",
-    name: "statementshome",
+    path: "/statements",
+    name: "statements",
     component: StatementsHome,
+  },
+  {
+    path: "/statements/:selected",
+    name: "statement",
+    component: Statement,
   },
 ];
 

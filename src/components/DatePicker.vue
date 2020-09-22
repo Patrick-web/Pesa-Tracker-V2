@@ -1,6 +1,5 @@
 <template>
   <div class="datePicker">
-    <div class="hidePicker" @click="hidePicker"></div>
     <div class="pickerContent">
       <vs-button
         style="font-size:1.2rem;font-weight:700;width:100px;margin:auto;margin-top:-20px"
@@ -10,7 +9,7 @@
       >Done</vs-button>
       <div class="pickerCard">
         <div class="pickerCardHead">Select Year</div>
-        <div @click="pickYear($event)" class="pickerCardBody grid4">
+        <div @click="pickYear($event)" class="pickerCardBody grid5">
           <p v-for="year in years" :key="year" class="pickOption">{{year}}</p>
         </div>
       </div>
@@ -21,7 +20,7 @@
       >
         <div v-if="pickedYear" class="pickerCard">
           <div class="pickerCardHead">Select Month</div>
-          <div @click="pickMonth($event)" class="pickerCardBody flexWrap">
+          <div @click="pickMonth($event)" class="pickerCardBody grid7">
             <div v-for="(month,index) in months" :key="month" class="pickOption">
               {{month}}
               <span style="display:none" id="monthNo">{{index + 1}}</span>
@@ -42,6 +41,7 @@
         </div>
       </transition>
     </div>
+    <div class="hidePicker" v-on:click="clearOptions" @click="hidePicker"></div>
   </div>
 </template>
 
@@ -145,18 +145,18 @@ export default {
       pickedDay: null,
       years: ["2018", "2019", "2020"],
       months: [
-        "January",
-        "February",
+        "Jan",
+        "Feb",
         "March",
         "April",
         "May",
         "June",
         "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
+        "Aug",
+        "Sept",
+        "Oct",
+        "Nov",
+        "Dec"
       ]
     };
   }
@@ -164,19 +164,15 @@ export default {
 </script>
 
 <style>
-.grid4 {
+.grid5 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 20px 20px;
 }
 .grid7 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 6px 10px;
-}
-.grid7 .pickOption {
-  padding: 2px;
-  padding-top: 4px;
 }
 .flexWrap {
   display: flex;
@@ -236,8 +232,7 @@ export default {
   border: 2px solid #0668b8;
   border-radius: 20px;
   padding: 4px;
-  padding-top: 6px;
-  font-size: 0.6rem;
+  font-size: 13px;
 }
 .picked {
   background: #0668b8;

@@ -1,15 +1,17 @@
 <template>
   <div class="savings page">
     <Header :page="$route.params.savingsType" />
+    <Stats />
     <Graph />
     <TabView :tabs="tabs" />
-    <img id="wave" src="@/assets/images/wave.svg" alt />
+    <!-- <img id="wave" src="@/assets/images/wave.svg" alt /> -->
   </div>
 </template>
 <script>
 import Header from "@/components/Header.vue";
 import TabView from "@/components/TabView.vue";
 import Graph from "@/components/Graph.vue";
+import Stats from "@/components/SavingsStats.vue";
 export default {
   data() {
     return {
@@ -62,7 +64,8 @@ export default {
   components: {
     Header,
     TabView,
-    Graph
+    Graph,
+    Stats
   }
 };
 </script>

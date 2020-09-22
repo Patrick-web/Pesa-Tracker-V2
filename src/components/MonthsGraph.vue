@@ -1,15 +1,9 @@
 <template>
   <div class="monthsGraph">
     <div class="barsWrapper">
-      <div @click="selectMonth($event,month)" v-for="month in data" :key="month.month" class="bar"></div>
-    </div>
-    <div class="barNamesWrapper">
-      <div
-        @click="selectMonth(month)"
-        v-for="month in data"
-        :key="month.month"
-        class="monthName"
-      >{{month.month}}</div>
+      <div @click="goToDays(month)" v-for="month in data" :key="month.month" class="monthBar">
+        <div class="monthName">{{ month.month }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -17,13 +11,8 @@
 <script>
 export default {
   methods: {
-    selectMonth(e, month) {
-      console.log(e.target);
-      this.selectedMonth = month;
-      const barNamesWrapper = document.querySelector(".barNamesWrapper");
-      const barsWrapper = document.querySelector(".barsWrapper");
-      barNamesWrapper.classList.add("flex-between");
-      barsWrapper.classList.add("flex-between");
+    goToDays() {
+      document.querySelector(".graphsWrapper").classList.add("scrollToDays");
     }
   },
   components: {},
@@ -31,6 +20,96 @@ export default {
     return {
       selectedMonth: null,
       data: [
+        {
+          totalDeposit: 5000,
+          month: "Jan",
+          deposits: [
+            {
+              day: "1",
+              deposit: 100
+            },
+            {
+              day: "5",
+              deposit: 1000
+            },
+            {
+              day: "3",
+              deposit: 350
+            }
+          ]
+        },
+        {
+          totalDeposit: 5000,
+          month: "Feb",
+          deposits: [
+            {
+              day: "1",
+              deposit: 100
+            },
+            {
+              day: "5",
+              deposit: 1000
+            },
+            {
+              day: "3",
+              deposit: 350
+            }
+          ]
+        },
+        {
+          totalDeposit: 5000,
+          month: "Mar",
+          deposits: [
+            {
+              day: "1",
+              deposit: 100
+            },
+            {
+              day: "5",
+              deposit: 1000
+            },
+            {
+              day: "3",
+              deposit: 350
+            }
+          ]
+        },
+        {
+          totalDeposit: 5000,
+          month: "April",
+          deposits: [
+            {
+              day: "1",
+              deposit: 100
+            },
+            {
+              day: "5",
+              deposit: 1000
+            },
+            {
+              day: "3",
+              deposit: 350
+            }
+          ]
+        },
+        {
+          totalDeposit: 5000,
+          month: "May",
+          deposits: [
+            {
+              day: "1",
+              deposit: 100
+            },
+            {
+              day: "5",
+              deposit: 1000
+            },
+            {
+              day: "3",
+              deposit: 350
+            }
+          ]
+        },
         {
           totalDeposit: 5000,
           month: "June",
@@ -84,6 +163,78 @@ export default {
               deposit: 350
             }
           ]
+        },
+        {
+          totalDeposit: 5000,
+          month: "Sep",
+          deposits: [
+            {
+              day: "1",
+              deposit: 100
+            },
+            {
+              day: "5",
+              deposit: 1000
+            },
+            {
+              day: "3",
+              deposit: 350
+            }
+          ]
+        },
+        {
+          totalDeposit: 5000,
+          month: "Oct",
+          deposits: [
+            {
+              day: "1",
+              deposit: 100
+            },
+            {
+              day: "5",
+              deposit: 1000
+            },
+            {
+              day: "3",
+              deposit: 350
+            }
+          ]
+        },
+        {
+          totalDeposit: 5000,
+          month: "Nov",
+          deposits: [
+            {
+              day: "1",
+              deposit: 100
+            },
+            {
+              day: "5",
+              deposit: 1000
+            },
+            {
+              day: "3",
+              deposit: 350
+            }
+          ]
+        },
+        {
+          totalDeposit: 5000,
+          month: "Dec",
+          deposits: [
+            {
+              day: "1",
+              deposit: 100
+            },
+            {
+              day: "5",
+              deposit: 1000
+            },
+            {
+              day: "3",
+              deposit: 350
+            }
+          ]
         }
       ]
     };
@@ -93,58 +244,43 @@ export default {
 
 <style scoped>
 .monthsGraph {
-  width: 50%;
-  height: 100%;
+  max-width: 100%;
+  height: 50%;
   position: relative;
-  /* background: #0062ff; */
-}
-.daysGraph {
-  position: absolute;
   overflow-x: scroll;
-  bottom: -1%;
-  right: 0;
-  width: 75%;
-  height: 102%;
-  background: #021737;
-  /* padding: 10px; */
+  display: grid;
 }
 .barsWrapper {
   position: relative;
   height: 90%;
-  width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: flex-end;
+  width: auto;
 }
-.bar {
-  bottom: 0%;
-  height: 10%;
+.increasePadding {
+  padding-left: 350px;
+}
+.monthBar {
+  background: rgb(0, 89, 255);
+  height: 80%;
+  min-width: 40px;
   width: 50px;
-  background: linear-gradient(180deg, #4a86e8, #021737);
+  position: relative;
   border-radius: 10px;
-  transition: 0.2s;
-}
-.day-bar {
-  width: 30px;
-}
-.barNamesWrapper {
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
+  margin-right: 5px;
+  margin-left: 5px;
+  justify-self: center;
+  align-self: flex-end;
 }
 .monthName {
-  width: 50px;
-  background: #0062ff;
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  background: #065dce;
   border-radius: 10px;
-  padding: 5px;
-}
-.day-name {
-  width: 30px;
-  background: #0062ff;
-  border-radius: 10px;
-  padding: 5px;
-}
-.flex-between {
-  justify-content: space-between;
+  padding: 3px;
+  box-shadow: 0px -2px 5px rgba(2, 10, 95, 0.5);
+  font-size: 14px;
 }
 </style>
