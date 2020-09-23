@@ -35,6 +35,54 @@ export default {
     showSwitcher() {
       document.querySelector(".statement").classList.add("showSwitcher");
     }
+  },
+  mounted() {
+    //TODO Implement code to automatically update the switcher on scroll
+    // Array.min = array => Math.min.apply(Math, array);
+    // const page = document.querySelector(".statement");
+    // const paid = document.querySelector("#currentPaid");
+    // const sent = document.querySelector("#currentSent");
+    // const received = document.querySelector("#currentReceived");
+    // const withdraw = document.querySelector("#currentWithdraw");
+    // let min;
+    // page.addEventListener("scroll", () => {
+    //   const paidData = {
+    //     section: "currentPaid",
+    //     top: paid.getBoundingClientRect().top
+    //   };
+    //   const sentData = {
+    //     section: "currentSent",
+    //     top: sent.getBoundingClientRect().top
+    //   };
+    //   if (
+    //     paidData.top < sentData.top &&
+    //     paidData.top > -1 &&
+    //     sentData.top > -1
+    //   ) {
+    //     min = paidData;
+    //   } else {
+    //     min = sentData;
+    //   }
+    //   const receivedData = {
+    //     section: "currentReceived",
+    //     top: received.getBoundingClientRect().top
+    //   };
+    //   if (receivedData.top < min.top && receivedData.top > -1) {
+    //     min = receivedData;
+    //   }
+    //   const withdrawData = {
+    //     section: "currentWithdraw",
+    //     top: withdraw.getBoundingClientRect().top
+    //   };
+    //   if (withdrawData.top < min.top && withdrawData.top > -1) {
+    //     min = withdrawData;
+    //   }
+    //   console.log(min);
+    //   document
+    //     .querySelector(".sectionSwitcher")
+    //     .classList.replace(this.current, min.section);
+    //   this.current = min.section;
+    // });
   }
 };
 </script>

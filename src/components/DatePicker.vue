@@ -20,7 +20,7 @@
       >
         <div v-if="pickedYear" class="pickerCard">
           <div class="pickerCardHead">Select Month</div>
-          <div @click="pickMonth($event)" class="pickerCardBody grid7">
+          <div @click="pickMonth($event)" class="pickerCardBody grid6">
             <div v-for="(month,index) in months" :key="month" class="pickOption">
               {{month}}
               <span style="display:none" id="monthNo">{{index + 1}}</span>
@@ -174,14 +174,10 @@ export default {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 6px 10px;
 }
-.flexWrap {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-}
-.flexWrap .pickOption {
-  margin: 3px;
+.grid6 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 6px 10px;
 }
 .datePicker {
   position: fixed;
@@ -232,7 +228,7 @@ export default {
   border: 2px solid #0668b8;
   border-radius: 20px;
   padding: 4px;
-  font-size: 13px;
+  font-size: 11px;
 }
 .picked {
   background: #0668b8;

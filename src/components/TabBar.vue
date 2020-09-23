@@ -1,0 +1,102 @@
+<template>
+  <div class="tabBar currentIsFlow">
+    <router-link :to="{name:'cashflow'}">
+      <div @click="switchTab('currentIsFlow')" class="tabBt flow">
+        <img src="@/assets/images/cash-register.svg" alt />
+        <p>CashFlow</p>
+      </div>
+    </router-link>
+    <router-link :to="{name:'statements'}">
+      <div @click="switchTab('currentIsStatements')" class="tabBt statement">
+        <img style="width:20px" src="@/assets/images/receipt.svg" alt />
+        <p>Statements</p>
+      </div>
+    </router-link>
+    <router-link :to="{name:'savingshome'}">
+      <div @click="switchTab('currentIsSavings')" class="tabBt save">
+        <img src="@/assets/images/piggy-bank.svg" alt />
+        <p>Savings</p>
+      </div>
+    </router-link>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      current: "currentIsFlow"
+    };
+  },
+  methods: {
+    switchTab(tab) {
+      const tabBar = document.querySelector(".tabBar");
+      tabBar.classList.replace(this.current, tab);
+      this.current = tab;
+    }
+  }
+};
+</script>
+
+<style lang="scss">
+.tabBar {
+  position: fixed;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  bottom: 0;
+  left: 0%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.493);
+  background: #073884;
+  img {
+    width: 21%;
+    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .tabBt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+      margin-top: 5px;
+      transition: 0.2s ease;
+      font-size: 12px;
+    }
+  }
+}
+.currentIsFlow {
+  .flow {
+    p {
+      transform: scale(0);
+    }
+    img {
+      flex: 2;
+      transform: scale(1.3) translateY(50%);
+    }
+  }
+}
+.currentIsStatements {
+  .statement {
+    p {
+      transform: scale(0);
+    }
+    img {
+      flex: 2;
+      transform: scale(1.2) translateY(30%);
+    }
+  }
+}
+.currentIsSavings {
+  .save {
+    p {
+      transform: scale(0);
+    }
+    img {
+      flex: 2;
+      transform: scale(1.5) translateY(50%);
+    }
+  }
+}
+</style>

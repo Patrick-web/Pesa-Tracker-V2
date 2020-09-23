@@ -19,11 +19,6 @@
         <p>Ksh 5000</p>
         <p>Safricom Company limited Airtime</p>
       </div>
-      <!-- <div class="tr">
-        <p>22/08/2020</p>
-        <p>Ksh 5000</p>
-        <p>Safricom Company limited Airtime</p>
-      </div>
       <div class="tr">
         <p>22/08/2020</p>
         <p>Ksh 5000</p>
@@ -108,7 +103,12 @@
         <p>22/08/2020</p>
         <p>Ksh 5000</p>
         <p>Safricom Company limited Airtime</p>
-      </div>-->
+      </div>
+      <div class="tr">
+        <p>22/08/2020</p>
+        <p>Ksh 5000</p>
+        <p>Safricom Company limited Airtime</p>
+      </div>
     </div>
   </div>
 </template>

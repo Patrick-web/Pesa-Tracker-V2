@@ -3,20 +3,23 @@
     <SideNav />
     <transition
       name="slideLeft"
-      enter-active-class="animated slideInRight faster"
-      leave-active-class="animated slideOutLeft extraFast"
+      enter-active-class="animated fadeInUp fast"
+      leave-active-class="animated fadeOutDown extraFast"
     >
       <router-view />
     </transition>
+    <TabBar />
   </div>
 </template>
 <script>
 import "boxicons";
 import SideNav from "@/components/SideNav";
+import TabBar from "@/components/TabBar";
 export default {
   components: {
     SideNav,
-  },
+    TabBar
+  }
 };
 </script>
 <style>

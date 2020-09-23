@@ -141,21 +141,20 @@ export default {
   top: 0;
   right: 0;
   transform: translateX(97%);
-  width: 200px;
+  width: 180px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
 }
 p {
   width: 350px;
-  margin-left: 5px;
+  font-size: 14px;
 }
 hr {
   background: white;
-  /* display: inline; */
 }
 h3 {
-  margin-left: 5px;
+  font-size: 14px;
 }
 #backToMonths {
   position: absolute;

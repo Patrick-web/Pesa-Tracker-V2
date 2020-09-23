@@ -36,7 +36,7 @@ export default {
 <style>
 #fab {
   position: fixed;
-  bottom: 10px;
+  bottom: 65px;
   right: 5px;
   z-index: 2;
 }
