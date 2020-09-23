@@ -8,8 +8,8 @@
     </router-link>
     <router-link :to="{name:'statements'}">
       <div @click="switchTab('currentIsStatements')" class="tabBt statement">
-        <img style="width:20px" src="@/assets/images/receipt.svg" alt />
-        <p>Statements</p>
+        <img style="width:18px;" src="@/assets/images/receipt.svg" alt />
+        <p style="margin-top:-1px;padding-top:2px;padding-bottom:2px">Statements</p>
       </div>
     </router-link>
     <router-link :to="{name:'savingshome'}">
@@ -34,6 +34,19 @@ export default {
       tabBar.classList.replace(this.current, tab);
       this.current = tab;
     }
+  },
+  watch: {
+    $route(to, from) {
+      if (to.name === "cashflow") {
+        this.switchTab("currentIsFlow");
+      }
+      if (to.name === "statements") {
+        this.switchTab("currentIsStatements");
+      }
+      if (to.name === "savingshome") {
+        this.switchTab("currentIsSavings");
+      }
+    }
   }
 };
 </script>
@@ -42,7 +55,7 @@ export default {
 .tabBar {
   position: fixed;
   padding-top: 5px;
-  padding-bottom: 5px;
+  //   padding-bottom: 5px;
   bottom: 0;
   left: 0%;
   width: 100%;
@@ -73,7 +86,7 @@ export default {
     }
     img {
       flex: 2;
-      transform: scale(1.3) translateY(50%);
+      transform: scale(1.3) translateY(30%);
     }
   }
 }
@@ -84,7 +97,7 @@ export default {
     }
     img {
       flex: 2;
-      transform: scale(1.2) translateY(30%);
+      transform: scale(1.2) translateY(20%);
     }
   }
 }
@@ -95,7 +108,7 @@ export default {
     }
     img {
       flex: 2;
-      transform: scale(1.5) translateY(50%);
+      transform: scale(1.5) translateY(25%);
     }
   }
 }

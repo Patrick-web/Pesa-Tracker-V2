@@ -138,9 +138,9 @@ export default {
 }
 .totalDeposit {
   position: absolute;
-  top: 0;
+  top: 1px;
   right: 0;
-  transform: translateX(97%);
+  transform: translateX(95%);
   width: 180px;
   display: flex;
   justify-content: flex-start;

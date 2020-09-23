@@ -3,13 +3,16 @@
     <img v-if="!hideBackArrow" @click="popRoute" id="backArrow" src="@/assets/images/arrow.svg" alt />
     <p v-if="hideBackArrow" id="filler"></p>
     <p id="headerName">{{page}}</p>
-    <img id="menuToggle" src="@/assets/images/menu-toggle.svg" alt />
+    <img id="menuToggle" @click="showSideNav" src="@/assets/images/menu-toggle.svg" alt />
   </div>
 </template>
 
 <script>
 export default {
   methods: {
+    showSideNav() {
+      document.body.classList.add("showNav");
+    },
     popRoute() {
       this.$router.back();
     }

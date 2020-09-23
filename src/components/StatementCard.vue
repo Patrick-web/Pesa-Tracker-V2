@@ -29,10 +29,11 @@ export default {
   overflow: hidden;
 }
 .cardTitle {
-  background: rgb(25, 91, 255);
+  background: rgb(34, 91, 238);
+  color: white;
   padding-bottom: 5px;
   padding-top: 5px;
-  font-weight: 800;
+  font-weight: 500;
 }
 .showMore {
   max-width: 210px;
@@ -43,6 +44,7 @@ export default {
   padding: 5px 5px 5px 12px;
   background: rgb(25, 91, 255);
   border-radius: 20px;
+  color: white;
 }
 .showMore img {
   width: 13%;

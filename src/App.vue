@@ -19,6 +19,29 @@ export default {
   components: {
     SideNav,
     TabBar
+  },
+  data() {
+    return {
+      slideX: 0,
+      slideY: 0
+    };
+  },
+  mounted() {
+    const app = document.body;
+    app.addEventListener("pointermove", e => {
+      this.slideX = e.movementX;
+      this.slideY = e.movementY;
+      if (this.slideX < -9 && this.slideY == 0) {
+        document.body.classList.add("showNav");
+      }
+      if (
+        this.slideX > 9 &&
+        this.slideY == 0 &&
+        document.body.classList.contains("showNav")
+      ) {
+        document.body.classList.remove("showNav");
+      }
+    });
   }
 };
 </script>
@@ -29,14 +52,13 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: white;
+  color: #c8ddfd;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 a {
