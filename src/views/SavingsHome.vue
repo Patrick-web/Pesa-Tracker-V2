@@ -1,6 +1,6 @@
 <template>
   <div class="savingsHome page">
-    <Header page="Savings" />
+    <Header hideBackArrow="true" page="Savings" />
     <router-link :to="{name:'savings', params:{savingsType:'Mshwari'}}">
       <StatementCard cardTitle="Mshwari" buttonText="Show Full Details">
         <div slot="cardBody" class="cardBody">

@@ -1,9 +1,8 @@
 <template>
   <div class="auth page">
-    <div class="hideTabBar"></div>
     <img src="@/assets/images/user-lock.svg" alt />
     <p style="font-size:1.1rem;color:white">Enter Pin</p>
-    <router-link style="position:fixed" id="goToHome" to="/CashFlow"></router-link>
+    <router-link style="position:fixed" id="goToHome" to="/CashFlow" replace></router-link>
     <div class="indicators">
       <div class="circle"></div>
       <div class="circle"></div>
@@ -43,7 +42,7 @@ export default {
       if (this.pin.length == 4) {
         const enteredPin = this.pin.join("");
         if (enteredPin === this.defaultPin) {
-          document.querySelector("#goToHome").click();
+          setTimeout(() => document.querySelector("#goToHome").click(), 100);
         } else {
           this.$vs.notification({
             icon: "<i class='bx bx-error' ></i>",
@@ -83,14 +82,6 @@ export default {
 </script>
 
 <style>
-.hideTabBar {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-  background: #021737;
-  z-index: 2;
-}
 .keypad {
   position: relative;
   z-index: 4;

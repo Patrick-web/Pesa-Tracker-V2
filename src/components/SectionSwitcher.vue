@@ -149,10 +149,9 @@ export default {
     z-index: 4;
     border: 0px solid white;
     transition: 0.1s ease;
+    color: white;
   }
-  p:hover {
-    cursor: pointer;
-  }
+
   .received {
     top: 50px;
     left: 13%;

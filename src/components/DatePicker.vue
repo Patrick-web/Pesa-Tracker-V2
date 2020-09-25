@@ -1,5 +1,7 @@
 <template>
   <div class="datePicker">
+    <div class="hidePicker" v-on:click="clearOptions" @click="hidePicker"></div>
+
     <div class="pickerContent">
       <vs-button
         style="font-size:1.2rem;font-weight:700;width:100px;margin:auto;margin-top:-20px"
@@ -41,7 +43,6 @@
         </div>
       </transition>
     </div>
-    <div class="hidePicker" v-on:click="clearOptions" @click="hidePicker"></div>
   </div>
 </template>
 
@@ -185,7 +186,7 @@ export default {
   width: 100%;
   top: 100%;
   transition: 0.2s ease-in-out;
-  z-index: 3;
+  z-index: 15;
 }
 .pickerContent {
   border-top: 3px solid rgb(40, 255, 40);

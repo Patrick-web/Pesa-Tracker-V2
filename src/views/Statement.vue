@@ -63,7 +63,7 @@ export default {
 .showSwitcher {
   .hideSwitcher {
     height: 100vh;
-    width: 100vh;
+    width: 200vw;
   }
 }
 </style>

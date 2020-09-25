@@ -5,8 +5,10 @@
     <slot name="progressBar" />
 
     <div class="showMore" primary circle>
-      <p>{{buttonText}}</p>
-      <img src="@/assets/images/expand.svg" alt />
+      <div class="bt">
+        <span>{{buttonText}}</span>
+        <img src="@/assets/images/expand.svg" alt />
+      </div>
     </div>
   </div>
 </template>
@@ -20,33 +22,45 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .statementCard {
   margin: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
   padding: 0px;
-  padding-bottom: 8px;
   border-radius: 20px;
   overflow: hidden;
 }
 .cardTitle {
-  background: rgb(34, 91, 238);
-  color: white;
+  background: #2196f3;
+  color: rgb(255, 255, 255);
   padding-bottom: 5px;
   padding-top: 5px;
   font-weight: 500;
 }
 .showMore {
-  max-width: 210px;
-  margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 5px 5px 5px 12px;
-  background: rgb(25, 91, 255);
-  border-radius: 20px;
-  color: white;
-}
-.showMore img {
-  width: 13%;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  .bt {
+    background: #1e88e5;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 30px;
+    padding-right: 8px;
+    padding-left: 8px;
+    span {
+      color: white;
+      margin-right: 5px;
+    }
+    img {
+      width: 20px;
+      margin: auto;
+    }
+  }
 }
 </style>

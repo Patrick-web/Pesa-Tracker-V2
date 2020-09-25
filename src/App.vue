@@ -8,6 +8,7 @@
     >
       <router-view />
     </transition>
+
     <TabBar />
   </div>
 </template>
@@ -29,17 +30,22 @@ export default {
   mounted() {
     const app = document.body;
     app.addEventListener("pointermove", e => {
-      this.slideX = e.movementX;
-      this.slideY = e.movementY;
-      if (this.slideX < -9 && this.slideY == 0) {
-        document.body.classList.add("showNav");
-      }
-      if (
-        this.slideX > 9 &&
-        this.slideY == 0 &&
-        document.body.classList.contains("showNav")
-      ) {
-        document.body.classList.remove("showNav");
+      const page = document.querySelector(".page");
+      if (!page.classList.contains("savings")) {
+        this.slideX = e.movementX;
+        this.slideY = e.movementY;
+        if (this.slideX < -9 && this.slideY == 0) {
+          document.body.classList.add("showNav");
+        }
+        if (
+          this.slideX > 9 &&
+          this.slideY == 0 &&
+          document.body.classList.contains("showNav")
+        ) {
+          document.body.classList.remove("showNav");
+        }
+      } else {
+        console.log("Scrolling on graph");
       }
     });
   }
@@ -52,7 +58,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #c8ddfd;
+  color: white;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

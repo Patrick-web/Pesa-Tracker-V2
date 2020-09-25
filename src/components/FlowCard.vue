@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style >
+<style lang="scss">
 .flowCard {
   background: #044174;
   margin: 20px 10px 20px 10px;
@@ -43,6 +43,7 @@ export default {
   font-size: 1.7em;
   font-weight: 500;
   margin-bottom: 5px;
+  color: #c8ddfd;
 }
 .cardBody {
   margin-top: 5px;
@@ -54,6 +55,10 @@ export default {
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
+  p,
+  h5 {
+    color: #c8ddfd;
+  }
 }
 hr {
   background: rgba(255, 255, 255, 0.63);

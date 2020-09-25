@@ -138,6 +138,7 @@ export default {
   align-self: center;
   font-weight: 600;
   font-size: 18px;
+  color: white;
 }
 .tbody {
   width: 100%;
@@ -159,6 +160,6 @@ export default {
   display: grid;
   justify-self: center;
   align-items: center;
-  font-size: 10px;
+  font-size: 15px;
 }
 </style>

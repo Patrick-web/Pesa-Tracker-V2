@@ -1,6 +1,6 @@
 <template>
   <div class="StatementsHome page">
-    <Header page="Statements" />
+    <Header hideBackArrow="true" page="Statements" />
     <router-link :to="{name:'statement', params:{selected:'May'}}">
       <StatementCard @click="generateStatement" cardTitle="June" buttonText="Show Full Statement">
         <div slot="cardBody" class="cardBody">

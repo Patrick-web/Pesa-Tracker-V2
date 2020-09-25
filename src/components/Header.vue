@@ -26,7 +26,8 @@ export default {
 
 <style>
 .header {
-  background: #152a4d;
+  background: #2962ff;
+  /* background: #152a4d; */
   height: 40px;
   width: 100%;
   display: grid;
@@ -59,5 +60,6 @@ export default {
   justify-self: center;
   font-size: 1.3em;
   font-weight: 700;
+  color: white;
 }
 </style>
