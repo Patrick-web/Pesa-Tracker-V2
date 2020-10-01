@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Auth from "../views/Auth.vue";
 import AuthInit from "../views/AuthInit.vue";
 import CashFlow from "../views/CashFlow.vue";
-import DataPage from "../views/DataPage.vue";
+import SelectedFlow from "../views/SelectedFlow.vue";
 import StatementsHome from "../views/StatementsHome.vue";
 import Statement from "../views/Statement.vue";
 import SavingsHome from "../views/SavingsHome.vue";
@@ -28,9 +28,9 @@ const routes = [
     component: CashFlow,
   },
   {
-    path: "/dataPage",
-    name: "dataPage",
-    component: DataPage,
+    path: "/selectedFlow:flowName",
+    name: "selectedFlow",
+    component: SelectedFlow,
   },
   {
     path: "/savingshome",

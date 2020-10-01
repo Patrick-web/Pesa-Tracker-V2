@@ -1,27 +1,23 @@
 <template>
-  <div class="dataCard">
+  <div class="dataCard" v-if="subTotal">
     <div class="flex-between">
-      <div class="cardAmount">Ksh 2000</div>
-      <div class="transType">Paid</div>
+      <div class="cardAmount">{{subTotal}}</div>
+      <div class="transType">{{type}}</div>
     </div>
-    <p class="recipient">Franklin Jones Mpesa Agent Limft Limired</p>
+    <p class="recipient">{{recipient}}</p>
     <div class="cardBody">
-      <div class="cardItem">
-        <p>Ksh 5415</p>
-        <p class="transDate">10 June 2020</p>
-      </div>
-      <hr />
-      <div class="cardItem">
-        <p>Ksh 4655</p>
-        <p class="transDate">11 June 2020</p>
-      </div>
-      <hr />
-      <div class="cardItem">
-        <p>Ksh 5454</p>
-        <p class="transDate">12 June 2020</p>
+      <div
+        style="position:relative"
+        v-for="record in topThreeRecords"
+        :key="record.time"
+        class="cardItem"
+      >
+        <p>{{record.amount}}</p>
+        <p class="transDate">{{record.date}}</p>
+        <hr style="position:absolute;bottom:0;transform:translateY(100%)" />
       </div>
     </div>
-    <vs-button id="showMore" primary circle>
+    <vs-button v-if="allRecords.length > 3" id="showMore" primary circle>
       <p>Show All</p>
       <img width="90%" src="@/assets/images/expand.svg" alt />
     </vs-button>
@@ -29,7 +25,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    subTotal: Number,
+    type: String,
+    recipient: String,
+    topThreeRecords: Array,
+    allRecords: Array
+  }
+};
 </script>
 
 <style>
@@ -57,7 +61,7 @@ export default {};
 .recipient {
   text-align: left;
   padding-left: 10px;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 0.9rem;
 }
 .transDate {
@@ -73,6 +77,7 @@ export default {};
   display: flex !important;
   padding: 0px;
   margin: auto;
+  margin-top: 5px;
 }
 #showMore img {
   width: 25px;

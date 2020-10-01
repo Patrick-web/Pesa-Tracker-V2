@@ -1,5 +1,5 @@
 <template>
-  <div class="flowCard card">
+  <div @click="renderFlow(targetFlow)" class="flowCard card">
     <p class="cardTitle">{{day}}</p>
     <hr />
     <div class="cardBody">
@@ -22,12 +22,17 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
+  methods: {
+    ...mapActions(["renderFlow"])
+  },
   props: {
     day: String,
     cashIn: String,
     cashOut: String,
-    savings: String
+    savings: String,
+    targetFlow: String
   }
 };
 </script>
@@ -38,6 +43,9 @@ export default {
   margin: 20px 10px 20px 10px;
   padding: 5px 2px 10px 2px;
   border-radius: 20px;
+}
+.flowCard:hover {
+  cursor: pointer;
 }
 .cardTitle {
   font-size: 1.7em;

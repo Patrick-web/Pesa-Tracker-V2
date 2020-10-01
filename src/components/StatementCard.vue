@@ -27,7 +27,7 @@ export default {
   margin: 10px;
   margin-bottom: 20px;
   margin-top: 20px;
-  padding: 0px;
+  padding-bottom: 5px;
   border-radius: 20px;
   overflow: hidden;
 }

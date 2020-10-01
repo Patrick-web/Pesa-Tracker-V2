@@ -54,6 +54,7 @@ export default {
 .header img {
   align-self: center;
   justify-self: center;
+  background: black;
 }
 .header p {
   align-self: center;

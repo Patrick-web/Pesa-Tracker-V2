@@ -1,13 +1,21 @@
 <template>
   <div class="dataPage page">
-    <Header :page="currentPage" />
+    <Header :page="$route.params.flowName" />
     <vs-button id="fab-center" success circle>
       <p>Show Summary</p>
       <img width="90%" src="@/assets/images/summary.svg" alt />
     </vs-button>
 
-    <DataCard />
-    <div class="center">
+    <DataCard
+      v-for="card in flowRender.data"
+      :key="card.recipient"
+      :subTotal="card.subTotal"
+      :type="card.type"
+      :recipient="card.recipient"
+      :topThreeRecords="card.topThreeRecords"
+      :allRecords="card.allRecords"
+    />
+    <!-- <div class="center">
       <button @click="showDetailsModal = !showDetailsModal">active</button>
       <vs-dialog blur v-model="showDetailsModal">
         <div class="grid2">
@@ -26,9 +34,7 @@
           <h3>Recipient</h3>
           <p>Safaricom lls limited access Kenya</p>
         </div>
-        <vs-button style="margin:auto" @click="showMsgModal = !showMsgModal">
-          Show Message
-        </vs-button>
+        <vs-button style="margin:auto" @click="showMsgModal = !showMsgModal">Show Message</vs-button>
       </vs-dialog>
       <vs-dialog blur v-model="showMsgModal">
         <p>
@@ -38,25 +44,27 @@
           necessitatibus et non fugit optio.
         </p>
       </vs-dialog>
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
 import DataCard from "@/components/DataCard.vue";
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       currentPage: "Today",
       showDetailsModal: false,
-      showMsgModal: false,
+      showMsgModal: false
     };
   },
+  computed: mapGetters(["flowRender"]),
   components: {
     Header,
-    DataCard,
-  },
+    DataCard
+  }
 };
 </script>
 
@@ -73,6 +81,7 @@ export default {
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 3;
 }
 #fab-center img {
   width: 70px;

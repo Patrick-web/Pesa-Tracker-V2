@@ -12,33 +12,33 @@
       <div class="pickerCard">
         <div class="pickerCardHead">Select Year</div>
         <div @click="pickYear($event)" class="pickerCardBody grid5">
-          <p v-for="year in years" :key="year" class="pickOption">{{year}}</p>
+          <p v-for="year in years" :key="year" class="pickOption">{{ year }}</p>
         </div>
       </div>
       <transition
         name="slideLeft"
-        enter-active-class="animated fadeInUp faster"
-        leave-active-class="animated fadeOutDown faster"
+        enter-active-class="animated slideInUp faster"
+        leave-active-class="animated slideOutDown faster"
       >
         <div v-if="pickedYear" class="pickerCard">
           <div class="pickerCardHead">Select Month</div>
           <div @click="pickMonth($event)" class="pickerCardBody grid6">
-            <div v-for="(month,index) in months" :key="month" class="pickOption">
-              {{month}}
-              <span style="display:none" id="monthNo">{{index + 1}}</span>
+            <div v-for="(month, index) in months" :key="month" class="pickOption">
+              {{ month }}
+              <span style="display:none" id="monthNo">{{ index }}</span>
             </div>
           </div>
         </div>
       </transition>
       <transition
         name="slideLeft"
-        enter-active-class="animated fadeInUp faster"
-        leave-active-class="animated fadeOutDown faster"
+        enter-active-class="animated slideInUp faster"
+        leave-active-class="animated slideOutDown faster"
       >
-        <div v-if="pickedMonth" class="pickerCard">
+        <div v-if="pickedMonth!==null" class="pickerCard">
           <div class="pickerCardHead">Select Day</div>
           <div @click="pickDay($event)" class="pickerCardBody grid7">
-            <p v-for="day in 31 " :key="day" class="pickOption">{{day}}</p>
+            <p v-for="day in 31" :key="day" class="pickOption">{{ day }}</p>
           </div>
         </div>
       </transition>
@@ -56,13 +56,17 @@ export default {
         this.pickedDay == null
       ) {
         this.selected.type = "Year";
-        this.selected.value = `${this.pickedYear}`;
+        this.selected.selectedDate = new Date(
+          `1/1/${this.pickedYear}`
+        ).getTime();
       } else if (this.pickedMonth && this.pickedDay == null) {
         this.selected.type = "Month";
-        this.selected.value = `${this.pickedMonth}/${this.pickedYear}`;
-      } else if (this.pickedDay) {
+        this.selected.selectedDate = new Date(
+          `${this.pickedMonth}/1/${this.pickedYear}`
+        );
+      } else if (this.pickedDay !== null) {
         this.selected.type = "Day";
-        this.selected.value = `${this.pickedDay}/${this.pickedMonth}/${this.pickedYear}`;
+        this.selected.selectedDate = `${this.pickedMonth}/${this.pickedDay}/${this.pickedYear}`;
       } else {
         this.selected.type = "None";
       }
@@ -72,7 +76,7 @@ export default {
       this.hidePicker();
     },
     hidePicker() {
-      document.querySelector(".datePicker").style.top = "100%";
+      document.querySelector(".page").classList.remove("showDatePicker");
     },
     clearOptions() {
       this.pickedYear = null;
@@ -109,7 +113,9 @@ export default {
           this.pickedMonth = null;
           this.pickedDay = null;
         } else {
-          this.pickedMonth = elem.querySelector("#monthNo").textContent;
+          this.pickedMonth = parseInt(
+            elem.querySelector("#monthNo").textContent
+          );
           const parent = e.currentTarget;
           if (parent.querySelector(".picked")) {
             parent.querySelector(".picked").classList.remove("picked");
@@ -125,7 +131,8 @@ export default {
           elem.classList.remove("picked");
           this.pickedDay = null;
         } else {
-          this.pickedDay = elem.textContent;
+          console.log(elem.textContent - 1);
+          this.pickedDay = parseInt(elem.textContent) - 1;
           const parent = e.currentTarget;
           if (parent.querySelector(".picked")) {
             parent.querySelector(".picked").classList.remove("picked");
@@ -139,7 +146,7 @@ export default {
     return {
       selected: {
         type: null,
-        value: null
+        selectedDate: null
       },
       pickedYear: null,
       pickedMonth: null,
@@ -164,7 +171,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .grid5 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -180,13 +187,21 @@ export default {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 6px 10px;
 }
+.showDatePicker {
+  .datePicker {
+    top: 0%;
+  }
+  .hidePicker {
+    opacity: 1;
+  }
+}
 .datePicker {
   position: fixed;
   height: 100vh;
   width: 100%;
   top: 100%;
-  transition: 0.2s ease-in-out;
   z-index: 15;
+  transition: 0.2s ease-in-out;
 }
 .pickerContent {
   border-top: 3px solid rgb(40, 255, 40);
@@ -196,8 +211,8 @@ export default {
   position: absolute;
   width: 100%;
   bottom: 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /* flex-direction: column; */
   justify-content: space-evenly;
   transition: height 0.2s ease;
 }
@@ -206,6 +221,8 @@ export default {
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.486);
+  opacity: 0;
+  transition: 0.3s ease;
 }
 .pickerCard {
   margin: 10px;

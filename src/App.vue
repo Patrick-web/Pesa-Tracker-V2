@@ -19,17 +19,17 @@ import TabBar from "@/components/TabBar";
 export default {
   components: {
     SideNav,
-    TabBar
+    TabBar,
   },
   data() {
     return {
       slideX: 0,
-      slideY: 0
+      slideY: 0,
     };
   },
   mounted() {
     const app = document.body;
-    app.addEventListener("pointermove", e => {
+    app.addEventListener("pointermove", (e) => {
       const page = document.querySelector(".page");
       if (!page.classList.contains("savings")) {
         this.slideX = e.movementX;
@@ -48,7 +48,7 @@ export default {
         console.log("Scrolling on graph");
       }
     });
-  }
+  },
 };
 </script>
 <style>

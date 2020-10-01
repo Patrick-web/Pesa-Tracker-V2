@@ -37,7 +37,6 @@ export default {
           currentCircle.classList.add("animated", "extraFast", "heartBeat");
         }
         this.pin.push(num);
-        console.log(this.pin);
       }
       if (this.pin.length == 4) {
         const enteredPin = this.pin.join("");
@@ -66,7 +65,6 @@ export default {
       if (document.querySelector(".filled")) {
         const circles = document.querySelectorAll(".filled");
         circles[circles.length - 1].className = "circle";
-        console.log(this.pin.join(""));
       }
     }
   },
